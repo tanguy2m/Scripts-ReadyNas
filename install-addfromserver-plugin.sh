@@ -15,11 +15,11 @@ wget -P ~ -O AddFromServer-$1.tar.gz https://github.com/tanguy2m/AddFromServer/t
 # Création du dossier de destination
 mkdir /c/www/piwigo-$2/bin/plugins/AddFromServer
 
-# Dézippage de l'archive directement dans le bon dossier
+# Dézippage de l'archive directement dans le bon dossier en supprimant le dossier chapeau
 tar -zxf ~/AddFromServer-$1.tar.gz -C /c/www/piwigo-$2/bin/plugins/AddFromServer --strip-components 1
 
-# Changement de propriétaire du dossier - L'archive GitHub crée un sous-dossier commençant par tanguy2m-
-chown -R admin:admin /c/www/piwigo-$2/bin/plugins/tanguy2m*
+# Changement de propriétaire du dossier de destination
+chown -R admin:admin /c/www/piwigo-$2/bin/plugins/AddFromServer
 
 # Suppression des fichiers temporaires
 rm ~/AddFromServer-$1.tar.gz
