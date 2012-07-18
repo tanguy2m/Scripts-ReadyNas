@@ -10,7 +10,7 @@ fi
 # Récupération du .tar.gz depuis le master GitHub
 # https://github.com/tanguy2m/AddFromServer/tarball/master
 # Ou pour les versions: https://github.com/tanguy2m/AddFromServer/tarball/v2.3.a
-wget -P ~ -O AddFromServer-$1.tar.gz https://github.com/tanguy2m/AddFromServer/tarball/$1 --no-check-certificate
+wget -O ~/AddFromServer-$1.tar.gz https://github.com/tanguy2m/AddFromServer/tarball/$1 --no-check-certificate
 
 # Création du dossier de destination
 mkdir /c/www/piwigo-$2/bin/plugins/AddFromServer
