@@ -23,3 +23,5 @@ chown -R admin:admin /c/www/piwigo-$2/bin/plugins/AddFromServer
 
 # Suppression des fichiers temporaires
 rm ~/AddFromServer-$1.tar.gz
+
+echo "FIN"

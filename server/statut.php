@@ -2,9 +2,27 @@
 
   include 'outils/include.php';
   
+  // Récupération du chemin vers le fichier de log
+  if(!isset($_GET['logPath'])) {
+      echo json_encode(array("status"=>"error","message"=>"Chemin du log non spécifié"));
+      exit(1);
+  }
+  $logPath = $_GET['logPath'];
+  
   // Récupération de la dernière version du client (timestamp du fichier)
-  $lastmodif = isset($_GET['timestamp']) ? $_GET['timestamp'] : 0;
+  if(!isset($_GET['timestamp'])) {
+      echo json_encode(array("status"=>"error","message"=>"Dernier timestamp non spécifié"));
+      exit(1);
+  }
+  $lastmodif = $_GET['timestamp'];
 
+  // Récupération de la dernière ligne de log lue
+  if(!isset($_GET['line'])) {
+      echo json_encode(array("status"=>"error","message"=>"Dernière ligne non spécifiée"));
+      exit(1);
+  }
+  $lastLine = $_GET['line'];
+  
   while(!file_exists($logPath)) // Pour éviter les problèmes avec un fichier pas encore créé
     usleep(500000);
   $currentmodif = filemtime($logPath); // Récupération de la dernière modif du fichier
@@ -22,9 +40,6 @@
   $lines = file($logPath);
   $log = "";
   $finished = "false";
-
-  // Récupération de la dernière ligne de log lue  
-  $lastLine = isset($_GET['line']) ? $_GET['line'] : 0;
   
   // Affiche toutes les lignes du tableau comme code HTML, avec les numéros de ligne
   for ($i = $lastLine; $i < count($lines); $i++) { //foreach ($lines as $line_num => $line) { // $line_num est le numéro de la ligne dans le fichier
@@ -43,6 +58,7 @@
   
   // Envoi d'un tableau Json avec le contenu du fichier en htmlet la date de modif associée
   $response = array();
+  $response['status'] = "ok";
   $response['log'] = $log;
   $response['timestamp'] = $currentmodif;
   $response['line'] = $lastLine;
