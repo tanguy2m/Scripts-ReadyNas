@@ -12,8 +12,9 @@
 	<script src="client/ui.notify.min.js"></script>
     <script src="client/treat.js"></script>
     
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/ui-lightness/jquery-ui.css">
 	<link rel="stylesheet" href="client/style.css">
-	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/ui-lightness/jquery-ui.css">
+	
   </head>
 
 <body>
@@ -30,9 +31,37 @@
     	<div>TBD</div>
     </div>
     
-    <div id="content"></div>
+    <div id="content" class="ui-widget-content ui-corner-all"></div>
     
-    <div id="notification"></div>
+    <div id="notification" style="display:none"> 
+
+        <div id="error" class="ui-state-error">
+            <!-- close link -->
+            <a class="ui-notify-close" href="#">
+                <span class="ui-icon ui-icon-close" style="float:right"></span>
+            </a>
+ 
+            <!-- alert icon -->
+            <span style="float:left; margin:2px 5px 0 0;" class="ui-icon ui-icon-alert"></span>
+ 
+            <h1>#{title}</h1>
+            <p>#{text}</p>
+        </div>
+        
+        <div id="info" class="ui-state-highlight">
+            <!-- close link -->
+            <a class="ui-notify-close" href="#">
+                <span class="ui-icon ui-icon-close" style="float:right"></span>
+            </a>
+ 
+            <!-- info icon -->
+            <span style="float:left; margin:2px 5px 0 0;" class="ui-icon ui-icon-info"></span>
+ 
+            <h1>#{title}</h1>
+            <p>#{text}</p>
+        </div>
+        
+    </div>
     
 </body>
 </html>
