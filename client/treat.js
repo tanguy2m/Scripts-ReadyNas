@@ -2,6 +2,14 @@
 //   Application de jQuery UI   //
 //////////////////////////////////
 
+// -------------------------------//
+//    Radios buttons jQuery UI    //
+// -------------------------------//
+$(function() {
+    $("#instance").buttonset();
+    $("#version").buttonset();
+});
+
 // ------------------------//
 //    Boutons jQuery UI    //
 // ------------------------//
@@ -61,11 +69,20 @@ $(function() {
 // Click sur bouton updateAddFromServer //
 // ------------------------------------ //
 $(function() {
+    
+    var instance = $("#instance :radio:checked").attr("id");
+    var version;
+    if( $("#version :radio:checked").attr("id") == "master") {
+        version = "master";
+    } else {
+        version = $("#tag").val();
+    }
+    
     $('#updateAddFromServer').click(function() {
         $.ajax({
             url: 'server/launchScript.php',
             data: {
-                script: "install-addfromserver-plugin.sh master dev"
+                script: "install-addfromserver-plugin.sh " + version + " " + instance
             },
             success: function(data) {
                 if (jQuery.parseJSON(data).status == "error") {
@@ -114,6 +131,7 @@ function getStatus(logPath) {
                 if (time != timestamp) // Si le timestamp a changé
                 {
                     timestamp = time;
+                    $('#content').show();
                     $('#content').append(jQuery.parseJSON(data).log);
                 }
         

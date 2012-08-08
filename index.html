@@ -12,26 +12,35 @@
 	<script src="client/ui.notify.min.js"></script>
     <script src="client/treat.js"></script>
     
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/ui-lightness/jquery-ui.css">
-	<link rel="stylesheet" href="client/style.css">
+    <link rel="stylesheet" href="client/style.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/ui-lightness/jquery-ui.css">	
 	
   </head>
 
 <body>
 
-    <div id="top" class="ui-widget-header"><h3>Toolbox admin ReadyNAS</h3></div>
+    <div id="top" class="ui-widget-header ui-corner-all"><h3>Toolbox admin ReadyNAS</h3></div>
     
     <div id="accordion">
-    	<h3><a href="#">Scripts Piwigo</a></h3>
+    	<h3><a href="#">Mettre à jour plugin AddFromServer</a></h3>
     	<div>
-    		<button type="button" id="updateAddFromServer">Mettre à jour le plugin AddFromServer</button>		
+            <div id="instance">
+                Instance: <input type="radio" name="instance" id="dev" checked="checked"/><label for="dev">dev</label>
+                <input type="radio" name="instance" id="prod" /><label for="prod">prod</label>
+            </div>
+            <div id="version">
+                Version: <input type="radio" name="version" id="master" checked="checked"/><label for="master">master</label>
+                <input type="radio" name="version" id="autre" /><label for="autre">autre:</label>
+                <input type="text" name="version" id="tag" size="6"/>ex: v2.4.a
+            </div>
+    		<button type="button" id="updateAddFromServer">Mettre à jour</button>		
     	</div>
     	
     	<h3><a href="#">Scripts serveur</a></h3>
     	<div>TBD</div>
     </div>
     
-    <div id="content" class="ui-widget-content ui-corner-all"></div>
+    <div id="content" class="ui-widget-content ui-corner-all" style="display:none"></div>
     
     <div id="notification" style="display:none"> 
 
