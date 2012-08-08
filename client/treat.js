@@ -69,16 +69,17 @@ $(function() {
 // Click sur bouton updateAddFromServer //
 // ------------------------------------ //
 $(function() {
-    
-    var instance = $("#instance :radio:checked").attr("id");
-    var version;
-    if( $("#version :radio:checked").attr("id") == "master") {
-        version = "master";
-    } else {
-        version = $("#tag").val();
-    }
-    
     $('#updateAddFromServer').click(function() {
+        
+        var instance = $("#instance :radio:checked").attr("id");
+        var version;
+        if ($("#version :radio:checked").attr("id") == "master") {
+            version = "master";
+        }
+        else {
+            version = $("#tag").val();
+        }
+    
         $.ajax({
             url: 'server/launchScript.php',
             data: {
