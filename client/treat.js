@@ -20,6 +20,10 @@ $(function() {
             primary: "ui-icon-eject"
         } // Icône de disquette sur le bouton AddTag
     });
+    $("#close").button({
+        text: false,
+        icons: {primary: "ui-icon-closethick"}
+	});
 });
 
 // ------------------------//
@@ -71,6 +75,8 @@ $(function() {
 $(function() {
     $('#updateAddFromServer').click(function() {
         
+        $("#accordion").accordion({active: -1});
+        
         var instance = $("#instance :radio:checked").attr("id");
         var version;
         if ($("#version :radio:checked").attr("id") == "master") {
@@ -94,6 +100,16 @@ $(function() {
                 }
             }
         });
+    });
+});
+
+// ---------------------- //
+// Click sur bouton close //
+// ---------------------- //
+$(function() {
+    $('button#close').click(function() {
+        $('#content').empty();
+        $('fieldset').hide();
     });
 });
 
@@ -132,7 +148,7 @@ function getStatus(logPath) {
                 if (time != timestamp) // Si le timestamp a changé
                 {
                     timestamp = time;
-                    $('#content').show();
+                    $('fieldset').show();
                     $('#content').append(jQuery.parseJSON(data).log);
                 }
         
